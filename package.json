@@ -6,6 +6,8 @@
   "author": "Sakura <sorahonda2@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "react": "^16.6.1",
+    "vue": "^2.5.17"
   }
 }
