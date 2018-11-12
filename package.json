@@ -6,10 +6,12 @@
   "author": "Sakura <sorahonda2@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "start": "webpack-dev-server --hot --progress",
+    "build": "webpack --progress"
   },
   "dependencies": {
     "express": "^4.16.4",
-    "react": "^16.6.1"
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1"
   }
 }

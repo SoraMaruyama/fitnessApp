@@ -1,0 +1,15 @@
+body {
+  font-family: Roboto;
+}
+
+.add-new-log {
+  border-radius: 5px;
+  padding: 15px;
+  width: 200px;
+  background-color: transparent;
+  &:hover {
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+  }
+}
