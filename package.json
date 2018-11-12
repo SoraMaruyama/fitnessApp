@@ -5,9 +5,11 @@
   "repository": "https://github.com/SoraMaruyama/sarah.git",
   "author": "Sakura <sorahonda2@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "express": "^4.16.4",
-    "react": "^16.6.1",
-    "vue": "^2.5.17"
+    "react": "^16.6.1"
   }
 }
