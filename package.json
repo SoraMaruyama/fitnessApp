@@ -1,0 +1,11 @@
+{
+  "name": "fitnessApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SoraMaruyama/sarah.git",
+  "author": "Sakura <sorahonda2@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
