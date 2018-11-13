@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import {
+  Button,
+  ButtonToolbar,
+  FormGroup,
+  ControlLabel,
+  FormControl
+} from "react-bootstrap";
 
 export default class InputActivity extends Component {
   constructor() {
@@ -15,11 +22,17 @@ export default class InputActivity extends Component {
   };
   render() {
     return (
-      <div className="inputpage">
-        <h3>How long did you Workout?</h3>
-        <input onChange={this.handleInput} />
-        <button onClick={this.callback}>save</button>
-      </div>
+      <form>
+        <FormGroup controlId="form">
+          <ControlLabel>How long did you Workout?</ControlLabel>
+          <FormControl onChange={this.handleInput} />
+        </FormGroup>
+        <ButtonToolbar>
+          <Button bsStyle="primary" onClick={this.callback}>
+            SAVE
+          </Button>
+        </ButtonToolbar>
+      </form>
     );
   }
 }

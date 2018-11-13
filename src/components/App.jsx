@@ -11,6 +11,9 @@ export default class App extends Component {
       currentMode: "ActivityView",
       activities: JSON.parse(localStorage.getItem("activities")) || []
     };
+    this.sum = JSON.parse(localStorage.getItem("activities")).reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
   }
   addActivity = minutes => {
     this.setState(
@@ -32,10 +35,17 @@ export default class App extends Component {
         );
       }
     );
+
+    // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    // this.sum = this.state.activities.reduce(reducer);
   };
 
   switchToInput = () => {
     this.setState({ currentMode: "Input" });
+  };
+
+  switchToGraph = () => {
+    this.setState({ currentMode: "Graph" });
   };
 
   backToActivities = () => {
@@ -48,11 +58,23 @@ export default class App extends Component {
         <div className="app">
           <Navbar
             mode={this.state.currentMode}
-            switchmode={this.switchToInput}
+            startInput={this.switchToInput}
+            viewGraph={this.switchToGraph}
           />
           <ActivityOverview
+            sum={this.sum}
             mode={this.state.currentMode}
             data={this.state.activities}
+          />
+        </div>
+      );
+    } else if (this.state.currentMode === "Graph") {
+      return (
+        <div className="app">
+          <Navbar
+            mode={this.state.currentMode}
+            startInput={this.switchToInput}
+            goback={this.backToActivities}
           />
           <BarChart
             mode={this.state.currentMode}
