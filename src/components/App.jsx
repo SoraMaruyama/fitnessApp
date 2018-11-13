@@ -1,33 +1,37 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
+import BarChart from "./BarChart.js";
 import ActivityOverview from "./ActivityOverview";
 import InputActivity from "./InputActivity";
 
 export default class App extends Component {
   constructor() {
     super();
-
     this.state = {
       currentMode: "ActivityView",
-      activities: []
+      activities: JSON.parse(localStorage.getItem("activities")) || []
     };
   }
-
   addActivity = minutes => {
-    this.setState({
-      currentMode: "ActivityView",
-      activities: [
-        ...this.state.activities,
-        {
-          date: new Date().toLocaleDateString(),
-          type: "workout",
-          minutes: Number(minutes)
-        }
-      ]
-    });
-
-    localStorage.setItem("activities", this.state.activities);
-    console.log("localStorage=", localStorage);
+    this.setState(
+      {
+        currentMode: "ActivityView",
+        activities: [
+          {
+            date: new Date().toLocaleDateString(),
+            type: "workout",
+            minutes: Number(minutes)
+          },
+          ...this.state.activities
+        ]
+      },
+      () => {
+        localStorage.setItem(
+          "activities",
+          JSON.stringify(this.state.activities)
+        );
+      }
+    );
   };
 
   switchToInput = () => {
@@ -46,7 +50,14 @@ export default class App extends Component {
             mode={this.state.currentMode}
             switchmode={this.switchToInput}
           />
-          <ActivityOverview activity={this.state.activities} />
+          <ActivityOverview
+            mode={this.state.currentMode}
+            data={this.state.activities}
+          />
+          <BarChart
+            mode={this.state.currentMode}
+            data={this.state.activities}
+          />
         </div>
       );
     }
