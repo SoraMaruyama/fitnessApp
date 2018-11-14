@@ -37,3 +37,4 @@ overview activities >> click input workout >> input workout >> save workout >> D
 Technology Used
 
 - D3, React, React Bootstrap
+[React Component Structure](readme/reactComponents.png)
