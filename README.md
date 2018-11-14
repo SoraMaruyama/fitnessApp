@@ -1,3 +1,5 @@
+![Fitness Logo](src/components/img/logo.png)
+
 **Introduction**
 
 
