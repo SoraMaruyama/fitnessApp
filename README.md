@@ -1,5 +1,5 @@
-**This text will be bold**
-#Introduction
+**Introduction**
+
 
 - App Name: Fitness
 - App Description: You can log your workout for today
