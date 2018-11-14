@@ -23,8 +23,7 @@
   I click “View Activity” then I can go back to “activity log page”.
 
 **MVP**
-In order to validate core features with sample users,
-create features in mock-up env for test use.
+- In order to validate core features with sample users, create features in mock-up env for test use.
 
 \*Features for 2 days
 
