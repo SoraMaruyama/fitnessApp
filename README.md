@@ -1,3 +1,4 @@
+**This text will be bold**
 #Introduction
 
 - App Name: Fitness
