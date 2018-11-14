@@ -1,37 +1,49 @@
 import React, { Component } from "react";
-import {
-  Button,
-  ButtonToolbar,
-  FormGroup,
-  ControlLabel,
-  FormControl
-} from "react-bootstrap";
+import { Button, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
 
 export default class InputActivity extends Component {
   constructor() {
     super();
     this.minutes = undefined;
+    this.type = undefined;
   }
 
-  handleInput = e => {
+  handleMinutesInput = e => {
     this.minutes = e.target.value;
   };
 
-  callback = () => {
-    return this.props.input(this.minutes);
+  handleTypeInput = e => {
+    this.type = e.target.value;
   };
+
+  handleChange = () => {
+    return this.props.input(this.minutes, this.type);
+  };
+
   render() {
     return (
       <form>
-        <FormGroup controlId="form">
-          <ControlLabel>How long did you Workout?</ControlLabel>
-          <FormControl onChange={this.handleInput} />
+        <FormGroup controlId="type">
+          <ControlLabel>What kind of workout did you do? (text)</ControlLabel>
+          <FormControl
+            type="text"
+            bsSize="sm"
+            placeholder="Enter text"
+            onChange={this.handleTypeInput}
+          />
         </FormGroup>
-        <ButtonToolbar>
-          <Button bsStyle="primary" onClick={this.callback}>
-            SAVE
-          </Button>
-        </ButtonToolbar>
+        <FormGroup controlId="minutes">
+          <ControlLabel>How long did you workout? (min)</ControlLabel>
+          <FormControl
+            type="text"
+            bsSize="sm"
+            placeholder="Enter text"
+            onChange={this.handleMinutesInput}
+          />
+        </FormGroup>
+        <Button type="submit" onClick={this.handleChange}>
+          SAVE
+        </Button>
       </form>
     );
   }

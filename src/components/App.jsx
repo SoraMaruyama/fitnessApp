@@ -3,7 +3,10 @@ import Navbar from "./Navbar";
 import BarChart from "./BarChart.js";
 import ActivityOverview from "./ActivityOverview";
 import InputActivity from "./InputActivity";
+import { Grid, Row, Col, PageHeader, Image } from "react-bootstrap";
+// import logo from "./img/logo.png";
 
+// console.log(logo);
 export default class App extends Component {
   constructor() {
     super();
@@ -15,14 +18,15 @@ export default class App extends Component {
       (accumulator, currentValue) => accumulator + currentValue
     );
   }
-  addActivity = minutes => {
+  addActivity = (minutes, type) => {
+    console.log("add activity started!");
     this.setState(
       {
         currentMode: "ActivityView",
         activities: [
           {
             date: new Date().toLocaleDateString(),
-            type: "workout",
+            type: type,
             minutes: Number(minutes)
           },
           ...this.state.activities
@@ -56,38 +60,110 @@ export default class App extends Component {
     if (this.state.currentMode === "ActivityView") {
       return (
         <div className="app">
-          <Navbar
-            mode={this.state.currentMode}
-            startInput={this.switchToInput}
-            viewGraph={this.switchToGraph}
-          />
-          <ActivityOverview
-            sum={this.sum}
-            mode={this.state.currentMode}
-            data={this.state.activities}
-          />
+          <Grid>
+            <Row>
+              <Col>
+                <PageHeader>Fitness</PageHeader>
+                {/* <Image src="./img/logo.png" rounded /> */}
+              </Col>
+            </Row>
+          </Grid>
+          <Grid>
+            <Row>
+              <Col>
+                <Navbar
+                  mode={this.state.currentMode}
+                  startInput={this.switchToInput}
+                  viewGraph={this.switchToGraph}
+                />
+              </Col>
+            </Row>
+          </Grid>
+          <div>
+            <Grid>
+              <Row>
+                <Col>
+                  <ActivityOverview
+                    sum={this.sum}
+                    mode={this.state.currentMode}
+                    data={this.state.activities}
+                  />
+                </Col>
+              </Row>
+            </Grid>
+          </div>
         </div>
       );
     } else if (this.state.currentMode === "Graph") {
       return (
         <div className="app">
-          <Navbar
-            mode={this.state.currentMode}
-            startInput={this.switchToInput}
-            goback={this.backToActivities}
-          />
-          <BarChart
-            mode={this.state.currentMode}
-            data={this.state.activities}
-          />
+          <Grid>
+            <Row>
+              <Col>
+                <PageHeader>Fitness</PageHeader>
+                {/* <Image src="./img/logo.png" rounded /> */}
+              </Col>
+            </Row>
+          </Grid>
+          <Grid>
+            <Row>
+              <Col>
+                <Navbar
+                  mode={this.state.currentMode}
+                  startInput={this.switchToInput}
+                  goback={this.backToActivities}
+                />
+              </Col>
+            </Row>
+          </Grid>
+          <div>
+            <Grid>
+              <Row>
+                <Col>
+                  <BarChart
+                    mode={this.state.currentMode}
+                    data={this.state.activities}
+                  />
+                </Col>
+              </Row>
+            </Grid>
+          </div>
         </div>
       );
     }
 
     return (
-      <div>
-        <Navbar mode={this.state.currentMode} goback={this.backToActivities} />
-        <InputActivity mode={this.state.currentMode} input={this.addActivity} />
+      <div className="app">
+        <Grid>
+          <Row>
+            <Col>
+              <PageHeader>Fitness</PageHeader>
+              {/* <Image src="./img/logo.png" rounded /> */}
+            </Col>
+          </Row>
+        </Grid>
+        <Grid>
+          <Row>
+            <Col>
+              <Navbar
+                mode={this.state.currentMode}
+                goback={this.backToActivities}
+              />
+            </Col>
+          </Row>
+        </Grid>
+        <div>
+          <Grid>
+            <Row>
+              <Col>
+                <InputActivity
+                  mode={this.state.currentMode}
+                  input={this.addActivity}
+                />
+              </Col>
+            </Row>
+          </Grid>
+        </div>
       </div>
     );
   }
