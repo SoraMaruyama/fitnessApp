@@ -22,7 +22,7 @@
   Given that I am at “graph page”,
   I click “View Activity” then I can go back to “activity log page”.
 
-#MVP
+**MVP**
 In order to validate core features with sample users,
 create features in mock-up env for test use.
 
@@ -35,7 +35,7 @@ create features in mock-up env for test use.
 \*Deploy one set of Workflow
 overview activities >> click input workout >> input workout >> save workout >> D3 shows activity history in bar graph
 
-#Technology Used
+**Technology Used**
 
 - D3, React, React Bootstrap
 ![React Component Structure](readme/reactComponents.png)
